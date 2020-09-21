@@ -1,5 +1,5 @@
 namespace ml4f {
-    //% shim=ml4f::_invoke
+    //% shim=ml4f::_invokeModel
     declare function _invoke(model: Buffer, arena: Buffer): void;
 
     export function shapeElements(shape: number[]) {

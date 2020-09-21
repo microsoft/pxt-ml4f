@@ -10,6 +10,7 @@ struct Header {
 
 typedef void (*model_fn_t)(const uint8_t *, uint8_t *);
 
+//%
 void _invokeModel(Buffer model, Buffer arena) {
   auto hd = (Header *)model->data;
   if (hd->magic != 0x30470f62)

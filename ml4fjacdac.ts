@@ -35,6 +35,10 @@ namespace jacdac {
             }
         }
 
+        get arenaBytes() {
+            return this.model.arenaSize
+        }
+
         get inputShape(): number[] {
             return this.model.inputShape
         }
