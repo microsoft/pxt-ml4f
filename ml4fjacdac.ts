@@ -1,13 +1,9 @@
-namespace jd_class {
-    export const ML4F = 0x17e04291
-}
-
 namespace jacdac {
     export class ML4FHost extends MLHost {
         model: ml4f.Model
 
         constructor(agg: SensorAggregatorHost) {
-            super("tflite", jd_class.ML4F, agg);
+            super("ml4f", ModelRunnerModelFormat.ML4F, agg);
         }
 
         protected invokeModel() {
