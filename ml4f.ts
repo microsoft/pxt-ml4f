@@ -26,17 +26,18 @@ namespace ml4f {
         constructor(public model: Buffer) {
             const [
                 magic,
+                _magic1,
                 _startOffset,
                 objectSize,
                 _weightsOffset,
-                _testInput, // 4
-                _testOutput, // 5
-                _arenaSize,
-                _inputOffset, // 7
-                inputType,
-                _outputOffset, // 9
+                _testInput, // 5
+                _testOutput, // 6
+                _arenaSize, // 7
+                _inputOffset, // 8
+                inputType, // 9
+                _outputOffset, // 10
                 outputType,
-                _padding
+                _padding // times4
             ] = model.unpack("16I")
 
             if (magic != 0x30470f62)
@@ -66,15 +67,16 @@ namespace ml4f {
             return this.shape(16 + this.inputShape.length + 1)
         }
 
-        get arenaSize() { return this.header(6) }
+        get arenaSize() { return this.header(7) }
 
         test() {
-            const testInp = this.header(4)
-            const testOutp = this.header(5)
+            const testInp = this.header(5)
+            const testOutp = this.header(6)
             if (testInp == 0)
                 return // no tests
             const res = this.invoke(this.model.slice(testInp, shapeSize(this.inputShape)))
             const outsz = shapeSize(this.outputShape)
+            console.log(`insz: ${this.inputShape.join(",")} outsz: ${this.outputShape.join(",")}`)
             let numfail = 0
             for (let off = 0; off < outsz; off += 4) {
                 const act = res.getNumber(NumberFormat.Float32LE, off)
@@ -95,8 +97,8 @@ namespace ml4f {
             if (input.length != shapeSize(this.inputShape))
                 throw "Bad input size"
             const arena = Buffer.create(this.arenaSize)
-            const inpOff = this.header(7)
-            const outpOff = this.header(9)
+            const inpOff = this.header(8)
+            const outpOff = this.header(10)
             arena.write(inpOff, input)
             _invoke(this.model, arena)
             return arena.slice(outpOff, shapeSize(this.outputShape))

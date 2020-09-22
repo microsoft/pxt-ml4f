@@ -4,6 +4,7 @@ namespace ml4f {
 
 struct Header {
   uint32_t magic;
+  uint32_t magic1;
   uint32_t startOffset;
   // ...
 };
