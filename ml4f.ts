@@ -2,16 +2,6 @@ namespace ml4f {
     //% shim=ml4f::_invokeModel
     declare function _invoke(model: Buffer, arena: Buffer): void;
 
-    export function shapeElements(shape: number[]) {
-        let res = 1
-        for (const s of shape) res *= s
-        return res
-    }
-
-    export function shapeSize(shape: number[]) {
-        return shapeElements(shape) << 2
-    }
-
     const eps = 0.00002
     function isNear(a: number, b: number) {
         const diff = Math.abs(a - b)
@@ -74,8 +64,8 @@ namespace ml4f {
             const testOutp = this.header(6)
             if (testInp == 0)
                 return // no tests
-            const res = this.invoke(this.model.slice(testInp, shapeSize(this.inputShape)))
-            const outsz = shapeSize(this.outputShape)
+            const res = this.invoke(this.model.slice(testInp, ml.shapeSize(this.inputShape)))
+            const outsz = ml.shapeSize(this.outputShape)
             console.log(`insz: ${this.inputShape.join(",")} outsz: ${this.outputShape.join(",")}`)
             let numfail = 0
             for (let off = 0; off < outsz; off += 4) {
@@ -94,14 +84,14 @@ namespace ml4f {
         }
 
         invoke(input: Buffer) {
-            if (input.length != shapeSize(this.inputShape))
+            if (input.length != ml.shapeSize(this.inputShape))
                 throw "Bad input size"
             const arena = Buffer.create(this.arenaSize)
             const inpOff = this.header(8)
             const outpOff = this.header(10)
             arena.write(inpOff, input)
             _invoke(this.model, arena)
-            return arena.slice(outpOff, shapeSize(this.outputShape))
+            return arena.slice(outpOff, ml.shapeSize(this.outputShape))
         }
     }
 }

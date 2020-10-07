@@ -10,9 +10,7 @@ namespace jacdac {
             try {
                 this.outputs = this.model.invoke(this.agg.samplesBuffer)
             } catch (e) {
-                if (typeof e == "string")
-                    this.lastError = e
-                control.dmesgValue(e)
+                this.catchHandler(e)
             }
         }
 
@@ -25,9 +23,7 @@ namespace jacdac {
             try {
                 this.model = new ml4f.Model(this.modelBuffer)
             } catch (e) {
-                if (typeof e == "string")
-                    this.lastError = e
-                control.dmesgValue(e)
+                this.catchHandler(e)
             }
         }
 
