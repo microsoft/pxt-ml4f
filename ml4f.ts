@@ -62,8 +62,10 @@ namespace ml4f {
         test() {
             const testInp = this.header(5)
             const testOutp = this.header(6)
-            if (testInp == 0)
+            if (testInp == 0) {
+                console.log("no tests defined")
                 return // no tests
+            }
             const res = this.invoke(this.model.slice(testInp, ml.shapeSize(this.inputShape)))
             const outsz = ml.shapeSize(this.outputShape)
             console.log(`insz: ${this.inputShape.join(",")} outsz: ${this.outputShape.join(",")}`)

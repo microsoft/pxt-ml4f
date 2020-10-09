@@ -22,6 +22,7 @@ namespace jacdac {
         protected loadModelImpl() {
             try {
                 this.model = new ml4f.Model(this.modelBuffer)
+                this.model.test()
             } catch (e) {
                 this.catchHandler(e)
             }
