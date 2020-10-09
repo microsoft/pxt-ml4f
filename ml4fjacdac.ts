@@ -28,14 +28,20 @@ namespace jacdac {
         }
 
         get arenaBytes() {
+            if (!this.model)
+                return 0
             return this.model.arenaSize
         }
 
         get inputShape(): number[] {
+            if (!this.model)
+                return null
             return this.model.inputShape
         }
 
         get outputShape(): number[] {
+            if (!this.model)
+                return null
             return this.model.outputShape
         }
     }
