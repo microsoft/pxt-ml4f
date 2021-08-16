@@ -31,5 +31,12 @@
         "maker"
     ],
     "preferredEditor": "tsprj",
-    "binaryonly": true
+    "binaryonly": true,
+    "extension": {
+        "namespace": "ml",
+        "label": "Import TF.JS Model",
+        "group": "Services",
+        "url": "https://microsoft.github.io/ml4f/pxt",
+        "localUrl": "http://localhost:8080/pxt"
+    }
 }
