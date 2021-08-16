@@ -3,8 +3,7 @@
     "version": "0.0.2",
     "description": "Run compiled ML models in MakeCode - beta",
     "dependencies": {
-        "ml": "github:microsoft/pxt-ml#v0.0.8",
-        "core": "*"
+        "ml": "github:microsoft/pxt-ml#v0.0.9"
     },
     "files": [
         "README.md",
@@ -14,11 +13,12 @@
         "ns.ts"
     ],
     "fileDependencies": {
-        "ml4fjacdac.ts": "jacdac-services"
+        "ml4fjacdac.ts": "jacdac"
     },
     "testDependencies": {
-        "jacdac-services": "github:microsoft/pxt-jacdac-services#v0.1.1",
-        "settings": "*"
+        "core": "*",
+        "settings": "*",
+        "jacdac": "github:microsoft/pxt-jacdac#v0.5.0"
     },
     "testFiles": [
         "test.ts"

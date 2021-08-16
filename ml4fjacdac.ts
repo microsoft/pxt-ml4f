@@ -1,8 +1,8 @@
 namespace jacdac {
-    export class ML4FHost extends MLHost {
+    export class ML4FServer extends MLServer {
         model: ml4f.Model
 
-        constructor(agg: SensorAggregatorHost) {
+        constructor(agg: SensorAggregatorServer) {
             super("ml4f", ModelRunnerModelFormat.ML4F, agg);
         }
 
@@ -48,5 +48,5 @@ namespace jacdac {
     }
 
     //% whenUsed
-    export const ml4fHost = new ML4FHost(sensorAggregatorHost)
+    export const ml4fHost = new ML4FServer(sensorAggregatorServer)
 }
