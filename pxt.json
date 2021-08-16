@@ -18,7 +18,9 @@
     "testDependencies": {
         "core": "*",
         "settings": "*",
-        "jacdac": "github:microsoft/pxt-jacdac#v0.5.0"
+        "jacdac": "github:microsoft/pxt-jacdac#v0.5.1",
+        "jacdac-model-runner": "github:microsoft/pxt-jacdac/model-runner#v0.5.1",
+        "jacdac-sensor-aggregator": "github:microsoft/pxt-jacdac/sensor-aggregator#v0.5.1"
     },
     "testFiles": [
         "test.ts"
