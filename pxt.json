@@ -3,7 +3,7 @@
     "version": "0.0.5",
     "description": "Run compiled ML models in MakeCode - beta",
     "dependencies": {
-        "ml": "github:microsoft/pxt-ml#v0.0.10"
+        "ml": "github:microsoft/pxt-ml#v0.0.11"
     },
     "files": [
         "README.md",
@@ -28,13 +28,17 @@
     "public": true,
     "supportedTargets": [
         "arcade",
-        "maker"
+        "maker",
+        "microbit"
+    ],
+    "disablesVariants": [
+        "mbdal"
     ],
     "preferredEditor": "tsprj",
     "binaryonly": true,
     "extension": {
         "namespace": "ml",
-        "label": "Import TF.JS Model",
+        "label": "Import Model",
         "group": "Services",
         "url": "https://microsoft.github.io/ml4f/",
         "localUrl": "http://localhost:8080/pxt"
