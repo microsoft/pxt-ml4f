@@ -13,6 +13,8 @@ namespace ml4f {
     }
 
     export class Model {
+        static instance: Model
+
         constructor(public model: Buffer) {
             const [
                 magic,
@@ -36,6 +38,7 @@ namespace ml4f {
                 throw "Buffer too small"
             if (inputType != 1 || outputType != 1)
                 throw "Only f32 i/o supported"
+            Model.instance = this
         }
 
         private header(off: number) {
@@ -99,6 +102,10 @@ namespace ml4f {
 }
 
 namespace ml {
+    // The ml namespace cannot be empty, otherwise our "Import Model" button won't show up.
+
     //% block
-    export function bogus() { }
+    export function selfTest() {
+        ml4f.Model.instance.test()
+    }
 }
