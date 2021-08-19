@@ -97,3 +97,8 @@ namespace ml4f {
         }
     }
 }
+
+namespace ml {
+    //% block
+    export function bogus() { }
+}
