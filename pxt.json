@@ -3,7 +3,7 @@
     "version": "0.0.3",
     "description": "Run compiled ML models in MakeCode - beta",
     "dependencies": {
-        "ml": "github:microsoft/pxt-ml#v0.0.9"
+        "ml": "github:microsoft/pxt-ml#v0.0.10"
     },
     "files": [
         "README.md",
@@ -36,7 +36,7 @@
         "namespace": "ml",
         "label": "Import TF.JS Model",
         "group": "Services",
-        "url": "https://microsoft.github.io/ml4f/pxt",
+        "url": "https://microsoft.github.io/ml4f/",
         "localUrl": "http://localhost:8080/pxt"
     }
 }
